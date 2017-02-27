@@ -7,3 +7,5 @@ if [ ! -f /var/www/pootle/.initialized ]; then
  	~/env/bin/pootle createsuperuser
 	touch /var/www/pootle/.initialized
 fi
+
+systemctl start pootle-fastcgi
