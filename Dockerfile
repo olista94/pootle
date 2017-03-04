@@ -27,12 +27,10 @@ RUN sed -e '/#CACHES/,/#}/ s/#\(.*\)/\1/g' -e 's@\(redis://\)127.0.0.1\(:6379\)@
 RUN echo "LANGUAGE_CODE = 'fr' " >> ~/.pootle/pootle.conf
 RUN sed -i "s@\('NAME' *: *\).*@\1'/var/local/pootledb/pootle.db',@"  ~/.pootle/pootle.conf
 
-#RUN cat  ~/.pootle/pootle.conf
-RUN ~/env/bin/pootle rqworker &
-RUN ~/env/bin/pootle migrate
-RUN ~/env/bin/pootle initdb
-RUN ~/env/bin/pootle createsuperuser
+
 
 EXPOSE 8000
 
 USER root
+
+CMD pootle-starter
