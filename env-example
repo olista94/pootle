@@ -1,0 +1,5 @@
+DB_NAME=pootledb
+DB_USER=pootle
+DB_PASS=apass
+DB_SERVICE=postgres
+DB_PORT=5432
