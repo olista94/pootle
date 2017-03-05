@@ -2,8 +2,8 @@
 ~/env/bin/pootle rqworker
 
 if [ ! -f /var/www/pootle/.initialized ]; then
-	~/env/bin/pootle migrate 
-	~/env/bin/pootle initdb
+	~/env/bin/pootle migrate
+	~/env/bin/pootle initdb --no-projects
 	~/env/bin/pootle createsuperuser
 
 	touch /var/www/pootle/.initialized
