@@ -24,4 +24,5 @@ fi
 
 #~pootle/env/bin/pootle runfcgi host=0.0.0.0 port=8000
 echo "start pootle"
-su-exec pootle ~pootle/env/bin/pootle start port=8000
+#su-exec pootle ~pootle/env/bin/pootle start port=8000
+su-exec pootle ~pootle/env/bin/pootle run_cherrypy --host 0.0.0.0 --port 8000
