@@ -19,7 +19,5 @@ USER root
 COPY pootle-starter.sh /usr/local/bin/pootle-starter
 
 USER pootle
-CMD  pootle-starter
-
-
 EXPOSE 8000
+CMD  pootle-starter

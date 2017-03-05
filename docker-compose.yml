@@ -8,6 +8,8 @@ services:
      - /var/pootledb
     depends_on:
      - redis
+    links:
+     - redis:redis
 
   redis:
     image: "redis:3.2.8"
