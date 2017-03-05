@@ -4,6 +4,8 @@ services:
   pootle:
     restart: always
     build: .
+    volumes:
+     - ./conf:/var/www/pootle/.pootle
     ports:
      - "8000:8000"
     expose:
