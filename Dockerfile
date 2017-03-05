@@ -6,8 +6,8 @@ RUN apt-get -qq update && \
 RUN easy_install pip && \
  pip install virtualenv
 RUN mkdir -p /var/www/pootle/env && \
- adduser --disabled-password --home /var/www/pootle --gecos '' pootle && \
- chown -R pootle /var/www/pootle
+ adduser --disabled-password --uid 1000 --gid 1000 --home /var/www/pootle --gecos '' pootle && \
+ chown -R pootle:pootle /var/www/pootle
 
 USER pootle
 RUN virtualenv ~/env && \
