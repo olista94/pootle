@@ -1,0 +1,14 @@
+version: '2'
+services:
+  pootle:
+    build: .
+    ports:
+     - "8000:8000"
+    volumes:
+     - /var/pootledb
+    depends_on:
+     - redis
+
+  redis:
+    image: "redis:3.2.8"
+  
