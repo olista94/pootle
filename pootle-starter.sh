@@ -1,8 +1,7 @@
-chown  1000:1000 /var/www/pootle/.pootle/
-#ls -ld /var/www/pootle/.pootle/
-#ls -ld /var/www/pootle/
-
+#!/bin/bash
+sleep 15
 if [ ! -f /var/www/pootle/.pootle/pootle.conf ]; then
+	chown  1000:1000 /var/www/pootle/.pootle/
 	echo "run pootle init"
 	su-exec pootle ~pootle/env/bin/pootle init --db postgresql --db-name $DB_NAME --db-user $DB_USER --db-host $DB_SERVICE
 	echo "run sed"
@@ -11,7 +10,6 @@ fi
 
 echo "start rqworker"
 su-exec pootle ~pootle/env/bin/pootle rqworker &
-echo "started"
 
 if [ ! -f /var/www/pootle/.pootle/.initialized ]; then
 	echo "run migrate"
@@ -22,7 +20,5 @@ if [ ! -f /var/www/pootle/.pootle/.initialized ]; then
 	su-exec pootle touch /var/www/pootle/.pootle/.initialized
 fi
 
-#~pootle/env/bin/pootle runfcgi host=0.0.0.0 port=8000
 echo "start pootle"
-#su-exec pootle ~pootle/env/bin/pootle start port=8000
 su-exec pootle ~pootle/env/bin/pootle run_cherrypy --host 0.0.0.0 --port 8000
