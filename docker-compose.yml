@@ -6,7 +6,6 @@ services:
     build: .
     volumes:
      - ./conf:/var/www/pootle/.pootle/
-    command: "chown 1000:1000 var/www/pootle/.pootle/"
     ports:
      - "8000:8000"
     expose:
@@ -33,6 +32,7 @@ services:
       - data
     volumes:
       - ./backups/postgresql:/backup
+      - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     env_file: .env
     expose:
       - "5432"

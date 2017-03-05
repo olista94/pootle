@@ -9,6 +9,7 @@ RUN mkdir -p /var/www/pootle/env && \
  groupadd --gid 1000 pootle && \
  adduser --disabled-password --uid 1000 --gid 1000 --home /var/www/pootle --gecos '' pootle && \
  chown -R pootle:pootle /var/www/pootle
+RUN git clone https://github.com/ncopa/su-exec &&  cd su-exec && make && cp su-exec /usr/local/bin/ && cd .. && rm -r su-exec/
 
 USER pootle
 RUN virtualenv ~/env && \
@@ -17,6 +18,6 @@ RUN virtualenv ~/env && \
 USER root
 COPY pootle-starter.sh /usr/local/bin/pootle-starter
 
-USER pootle
 EXPOSE 8000
-CMD  pootle-starter
+CMD pootle-starter
+
