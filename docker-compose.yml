@@ -5,7 +5,8 @@ services:
     restart: always
     build: .
     volumes:
-     - ./conf:/var/www/pootle/.pootle/
+     - ./conf:/var/www/pootle/.pootle
+     - /var/www/pootle
     ports:
      - "8000:8000"
     expose:
@@ -36,6 +37,16 @@ services:
     env_file: .env
     expose:
       - "5432"
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes_from:
+    - pootle
+  links:
+    - pootle:pootle
 
 
   data:
