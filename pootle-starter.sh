@@ -1,6 +1,6 @@
 #!/bin/bash
-sleep 15
-if [ ! -f /var/www/pootle/.pootle/pootle.conf ]; then
+sleep 10
+if [ ! -f ~pootle/.pootle/pootle.conf ]; then
 	chown  1000:1000 /var/www/pootle/.pootle/
 	echo "run pootle init"
 	su-exec pootle ~pootle/env/bin/pootle init --db postgresql --db-name $DB_NAME --db-user $DB_USER --db-host $DB_SERVICE
@@ -11,13 +11,13 @@ fi
 echo "start rqworker"
 su-exec pootle ~pootle/env/bin/pootle rqworker &
 
-if [ ! -f /var/www/pootle/.pootle/.initialized ]; then
+if [ ! -f ~pootle/.pootle/.initialized ]; then
 	echo "run migrate"
 	su-exec pootle ~pootle/env/bin/pootle migrate
 	su-exec pootle ~pootle/env/bin/pootle initdb --no-projects
 	su-exec pootle ~pootle/env/bin/pootle createsuperuser
 
-	su-exec pootle touch /var/www/pootle/.pootle/.initialized
+	su-exec pootle touch ~pootle/.pootle/.initialized
 fi
 
 echo "start pootle"
