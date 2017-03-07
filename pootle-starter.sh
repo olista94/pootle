@@ -1,5 +1,14 @@
 #!/bin/bash
-sleep 10
+
+until psql -h "postgres" -U "pootle" -c '\l'; do
+  >&2 echo "Postgres is unavailable - sleeping"
+  sleep 1
+done
+
+>&2 echo "Postgres is up - executing command"
+
+
+
 if [ ! -f ~pootle/.pootle/pootle.conf ]; then
 	chown  1000:1000 /var/www/pootle/.pootle/
 	echo "run pootle init"
@@ -10,6 +19,8 @@ fi
 
 echo "start rqworker"
 su-exec pootle ~pootle/env/bin/pootle rqworker &
+
+sleep 2
 
 if [ ! -f ~pootle/.pootle/.initialized ]; then
 	echo "run migrate"
