@@ -2,7 +2,7 @@ FROM debian:8
 MAINTAINER amj "amj@tdct.org"
 
 RUN apt-get -qq update && \
- apt-get install -y python-dev python-setuptools git build-essential libxml2-dev libxslt-dev libxml2 libxslt1.1 zlib1g-dev postgresql-client-common && |
+ apt-get install -y python-dev python-setuptools git build-essential libxml2-dev libxslt-dev libxml2 libxslt1.1 zlib1g-dev postgresql-client-common postgresql-client-9.4 && \
  apt-get clean
 
 RUN easy_install pip && \

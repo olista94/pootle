@@ -1,11 +1,11 @@
 #!/bin/bash
 
-until psql -h "postgres" -U "pootle" -c '\l'; do
-  >&2 echo "Postgres is unavailable - sleeping"
+until psql -h "postgres" -U "postgres" -c '\l'; do
+  echo "Postgres is unavailable - sleeping"
   sleep 1
 done
 
->&2 echo "Postgres is up - executing command"
+echo "Postgres is up - executing command"
 
 
 
