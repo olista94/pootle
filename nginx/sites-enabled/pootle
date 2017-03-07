@@ -4,7 +4,7 @@ server {
     server_name localhost;
     charset utf-8;
 
-#    access_log /var/www/pootle/logs/nginx-access.log;
+    access_log /var/www/pootle/logs/nginx-access.log;
     gzip on; # Enable gzip compression
 
     location /assets {
