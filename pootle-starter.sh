@@ -34,4 +34,4 @@ if [ ! -f ~pootle/.pootle/.initialized ]; then
 fi
 
 echo "start pootle"
-su-exec pootle ~pootle/env/bin/pootle run_cherrypy --host 0.0.0.0 --port 8000
+su-exec pootle ~pootle/env/bin/pootle runserver --insecure 0.0.0.0:8000

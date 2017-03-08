@@ -2,8 +2,10 @@ FROM debian:8
 MAINTAINER amj "amj@tdct.org"
 
 RUN apt-get -qq update && \
- apt-get install -y python-dev python-setuptools git build-essential libxml2-dev libxslt-dev libxml2 libxslt1.1 zlib1g-dev postgresql-client-common postgresql-client-9.4 && \
- apt-get clean
+ apt-get install -y python-dev python-setuptools git build-essential libxml2-dev libxslt-dev libxml2 libxslt1.1 zlib1g-dev postgresql-client-common postgresql-client-9.4 locales && \
+ apt-get clean && \
+ echo en_US.UTF-8 UTF-8 >> /etc/locale.gen && \
+ locale-gen
 
 RUN easy_install pip && \
  pip install virtualenv && \
@@ -19,7 +21,7 @@ RUN git clone https://github.com/ncopa/su-exec &&  cd su-exec && make && cp su-e
 
 USER pootle
 RUN virtualenv ~/env && \
- ~/env/bin/pip install psycopg2 Pootle==2.7.6 && \
+ ~/env/bin/pip install psycopg2 Pootle==2.8.0rc5 && \
  rm -r ~/.cache
 
 
