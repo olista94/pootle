@@ -3,3 +3,8 @@ DB_USER=pootle
 DB_PASS=apass
 DB_SERVICE=postgres
 DB_PORT=5432
+
+
+POOTLE_ADMIN_EMAIL="admin@email.foo"
+POOTLE_ADMIN_PASSWORD="astupidpassword"
+POOTLE_ADMIN_NAME="admin"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-until psql -h "postgres" -U "postgres" -c '\l'; do
+until psql -h "$DB_SERVICE" -U "postgres" -c '\l'; do
   echo "Postgres is unavailable - sleeping"
   sleep 1
 done
@@ -26,7 +26,9 @@ if [ ! -f ~pootle/.pootle/.initialized ]; then
 	echo "run migrate"
 	su-exec pootle ~pootle/env/bin/pootle migrate
 	su-exec pootle ~pootle/env/bin/pootle initdb --no-projects
-	su-exec pootle ~pootle/env/bin/pootle createsuperuser
+	#su-exec pootle ~pootle/env/bin/pootle createsuperuser
+	su-exec pootle   echo 'from django.contrib import auth; auth.get_user_model()._default_manager.db_manager("default").create_superuser("$POOTLE_ADMIN_NAME", "$POOTLE_ADMIN_EMAIL", "$POOTLE_ADMIN_PASSWORD")' | ~pootle/env/bin/pootle shell
+	su-exec pootle ~pootle/env/bin/pootle verify_user $POOTLE_ADMIN_NAME
 
 	su-exec pootle touch ~pootle/.pootle/.initialized
 fi
