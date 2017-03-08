@@ -1,6 +1,6 @@
 DB_NAME=pootledb
 DB_USER=pootle
-DB_PASS=apass
+DB_PASS=astupidpassword
 DB_SERVICE=postgres
 DB_PORT=5432
 
@@ -9,4 +9,13 @@ POOTLE_ADMIN_EMAIL=admin@email.foo
 POOTLE_ADMIN_PASSWORD=astupidpassword
 POOTLE_ADMIN_NAME=admin
 
+
 POOTLE_SETTINGS=/var/www/pootle/.pootle/pootle.conf
+
+
+EMAIL_HOST_USER='me@foo.bar'
+DEFAULT_FROM_EMAIL='pootle@foo.bar'
+EMAIL_HOST_PASSWORD='astupidpassword'
+EMAIL_HOST='smtp.foo.bar'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True

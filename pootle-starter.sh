@@ -14,7 +14,16 @@ if [ ! -f ~pootle/.pootle/pootle.conf ]; then
 	echo "run pootle init"
 	su-exec pootle ~pootle/env/bin/pootle init --db postgresql --db-name $DB_NAME --db-user $DB_USER --db-host $DB_SERVICE
 	echo "run sed"
-	su-exec pootle sed -e "s@\('PASSWORD' *: *\).*@\1'$DB_PASS',@" -e '/#CACHES/,/#}/ s/#\(.*\)/\1/g' -e 's@\(redis://\)127.0.0.1\(:6379\)@\1redis\2@g'  -i ~pootle/.pootle/pootle.conf
+	su-exec pootle sed -e "s@\('PASSWORD' *: *\).*@\1'$DB_PASS',@" \
+                           -e '/#CACHES/,/#}/ s/#\(.*\)/\1/g' \
+                           -e 's@\(redis://\)127.0.0.1\(:6379\)@\1redis\2@g' -i ~pootle/.pootle/pootle.conf
+
+	su-exec pootle sed -e "s|#\(EMAIL_HOST_USER = \).*|\1 $EMAIL_HOST_USER|" \
+                           -e "s@#\(EMAIL_HOST_PASSWORD = \).*@\1 $EMAIL_HOST_PASSWORD@" \
+                           -e "s@#\(EMAIL_HOST = \).*@\1 $EMAIL_HOST@" \
+                           -e "s@#\(EMAIL_PORT = \).*@\1 $EMAIL_PORT@" \
+                           -e "s@#\(EMAIL_USE_TLS = \).*@\1 $EMAIL_USE_TLS@" \
+                           -e "s|\(DEFAULT_FROM_EMAIL = \).*|\1 $DEFAULT_FROM_EMAIL|" -i ~pootle/.pootle/pootle.conf
 fi
 
 echo "start rqworker"
