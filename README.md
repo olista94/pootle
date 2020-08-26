@@ -6,11 +6,11 @@
     - redis
     - postgresql
     - nginx
-    
+
 ## run
 
  ```
- git clone https://framagit.org/amj/docker-pootle-alone.git pootle
+ git clone https://github.com/olista94/pootle.git pootle
  cd pootle
  cp env-example .env
  $EDITOR .env # do not use ""
@@ -18,5 +18,5 @@
  docker-compose up
  ```
 ## use
- 
+
  nginx listen `localhost:80` and pootle `localhost:8000` (same interface)
