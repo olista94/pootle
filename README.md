@@ -1,4 +1,4 @@
-# Pootle container - docker-compose
+# Pootle-Serge.io container - docker-compose
 
 ## contains
 
