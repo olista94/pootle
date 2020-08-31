@@ -5,7 +5,8 @@
     - pootle
     - redis
     - postgresql
-    - nginx
+    - nginx (unused)
+    - serge
 
 ## run
 
