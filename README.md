@@ -1,12 +1,12 @@
-# Pootle container - docker-compose
+# Pootle-Serge.io container - docker-compose
 
 ## contains
 
     - pootle
     - redis
     - postgresql
-    - serge
     - nginx (unused)
+    - serge
 
 ## run
 
@@ -17,7 +17,7 @@
  $EDITOR .env # do not use ""
  docker-compose build
  docker-compose up
- ``` 
+ ```
 ## note
     - Before doing `docker-compose build`, delete `.enviroment` file first
 ## use
