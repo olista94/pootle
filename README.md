@@ -5,7 +5,8 @@
     - pootle
     - redis
     - postgresql
-    - nginx
+    - serge
+    - nginx (unused)
 
 ## run
 
@@ -16,7 +17,9 @@
  $EDITOR .env # do not use ""
  docker-compose build
  docker-compose up
- ```
+ ``` 
+## note
+    - Before doing `docker-compose build`, delete `.enviroment` file first
 ## use
 
  nginx listen `localhost:80` and pootle `localhost:8000` (same interface)
