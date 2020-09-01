@@ -1,4 +1,5 @@
 # Pootle-Serge.io container - docker-compose
+# alpine:3.11
 
 ## contains
 
