@@ -7,6 +7,7 @@ RUN apk --no-cache add \
         bash \
         build-base \
         expat-dev \
+        gettext \
         git \
         libxml2 \
         libxml2-dev \
