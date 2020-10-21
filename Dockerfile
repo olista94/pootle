@@ -61,6 +61,12 @@ RUN cpanm --force --no-wget --installdeps .
 
 RUN ln -s /var/opt/serge/serge-1.4/bin/serge /usr/local/bin/serge
 
+RUN ls
+
+WORKDIR /var
+
+RUN git clone https://github.com/olista94/serge.git
+
 RUN pip install --upgrade pip
 
 RUN pip install https://github.com/django-compressor/django-appconf/archive/v1.0.2.zip

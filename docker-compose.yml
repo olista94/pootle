@@ -6,7 +6,7 @@ services:
     build: .
     volumes:
      - ./volumes/conf:/var/www/pootle/.pootle
-     - ./volumes/serge:/var/serge
+     # - ./volumes/serge:/var/serge
      - /var/www/pootle
     ports:
      - "8000:8000"

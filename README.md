@@ -18,6 +18,8 @@
  $EDITOR .env # do not use ""
  docker-compose build
  docker-compose up
+ docker exec -it pootle_pootle_1 bash (to open bash in container)
+ 
  ```
 ## note
     - Before doing `docker-compose build`, delete `.enviroment` file first
